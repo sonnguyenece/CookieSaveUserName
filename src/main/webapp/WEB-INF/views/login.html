@@ -6,16 +6,16 @@
 </head>
 <body>
 <h1>User Login</h1>
-<form action="#" th:action="@{/dologin}" th:object="${user}" method="post">
+<form action="#" th:action="@{/signin}" th:object="${user}" method="post">
     <table border="0">
         <tr>
             <td><label>Email</label></td>
-            <td><input type="text" id="email" name="email"
-                       th:value="${cookieValue.value}"/></td>
+            <td><input type="email" id="email" name="email"
+                       th:value="${emailSave}" /></td>
         </tr>
         <tr>
             <td><label>Password</label></td>
-            <td><input type="password" th:field="*{password}"/></td>
+            <td><input type="password" name="password" th:value="${passwordSave}"/></td>
         </tr>
     </table>
     <input type="submit" value="Login"/>
