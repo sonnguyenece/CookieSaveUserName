@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@RequestMapping("/")
 @Controller
 public class LoginController {
 
@@ -21,7 +22,7 @@ public class LoginController {
         return new User();
     }
 
-    @RequestMapping("/login")
+    @RequestMapping
     public String Index(@CookieValue(value = "setUser", defaultValue = "") String setUser, Model model) {
         Cookie cookie = new Cookie("setUser", setUser);
         model.addAttribute("cookieValue", cookie);
@@ -39,7 +40,7 @@ public class LoginController {
             cookie.setMaxAge(60);
             response.addCookie(cookie);
 
-            Cookie[]cookies=request.getCookies();
+            Cookie[]cookies = request.getCookies();
             for (Cookie ck:cookies){
                 if (ck.getName().equals("setUser")){
                     model.addAttribute("cookieValue",ck);
